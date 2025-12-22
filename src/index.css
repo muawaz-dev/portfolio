@@ -1,96 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ==========================================
+   KODAC SOLUTIONS - DESIGN SYSTEM
+   Futuristic Dark Purple Neon Theme
+   ========================================== */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Core Background Colors - Deep Purple/Violet */
+    --background: 260 50% 5%;
+    --foreground: 270 20% 95%;
+    
+    /* Card/Surface Colors - Glassmorphism Base */
+    --card: 260 40% 10%;
+    --card-foreground: 270 20% 95%;
+    
+    /* Popover Colors */
+    --popover: 260 40% 8%;
+    --popover-foreground: 270 20% 95%;
+    
+    /* Primary - Neon Purple */
+    --primary: 270 80% 65%;
+    --primary-foreground: 270 20% 98%;
+    
+    /* Secondary - Deep Violet */
+    --secondary: 280 60% 20%;
+    --secondary-foreground: 270 20% 95%;
+    
+    /* Muted Colors */
+    --muted: 260 30% 15%;
+    --muted-foreground: 270 15% 60%;
+    
+    /* Accent - Electric Blue */
+    --accent: 195 100% 50%;
+    --accent-foreground: 195 100% 98%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Border & Input */
+    --border: 270 30% 25%;
+    --input: 260 30% 15%;
+    --ring: 270 80% 65%;
+    
+    /* Chart Colors */
+    --chart-1: 270 80% 65%;
+    --chart-2: 195 100% 50%;
+    --chart-3: 330 85% 60%;
+    --chart-4: 160 80% 50%;
+    --chart-5: 45 90% 55%;
+    
+    /* Sidebar */
+    --sidebar-background: 260 50% 5%;
+    --sidebar-foreground: 270 20% 95%;
+    --sidebar-primary: 270 80% 65%;
+    --sidebar-primary-foreground: 270 20% 98%;
+    --sidebar-accent: 195 100% 50%;
+    --sidebar-accent-foreground: 195 100% 98%;
+    --sidebar-border: 270 30% 25%;
+    --sidebar-ring: 270 80% 65%;
+    
+    /* Custom Neon Colors */
+    --neon-purple: 270 80% 65%;
+    --neon-blue: 195 100% 50%;
+    --neon-pink: 330 85% 60%;
+    --neon-violet: 280 70% 50%;
+    
+    /* Glow Effects */
+    --glow-purple: 270 80% 65%;
+    --glow-blue: 195 100% 50%;
+    --glow-pink: 330 85% 60%;
+    
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Dark mode uses same values for this theme */
+    --background: 260 50% 5%;
+    --foreground: 270 20% 95%;
+    --card: 260 40% 10%;
+    --card-foreground: 270 20% 95%;
+    --popover: 260 40% 8%;
+    --popover-foreground: 270 20% 95%;
+    --primary: 270 80% 65%;
+    --primary-foreground: 270 20% 98%;
+    --secondary: 280 60% 20%;
+    --secondary-foreground: 270 20% 95%;
+    --muted: 260 30% 15%;
+    --muted-foreground: 270 15% 60%;
+    --accent: 195 100% 50%;
+    --accent-foreground: 195 100% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 270 30% 25%;
+    --input: 260 30% 15%;
+    --ring: 270 80% 65%;
   }
 }
 
@@ -99,7 +108,329 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html {
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* ==========================================
+   GLASSMORPHISM UTILITIES
+   ========================================== */
+@layer components {
+  .glass {
+    @apply bg-card/30 backdrop-blur-xl border border-border/30;
+  }
+
+  .glass-card {
+    @apply bg-card/20 backdrop-blur-2xl border border-border/20 rounded-2xl;
+    box-shadow: 
+      0 8px 32px rgba(139, 92, 246, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-input {
+    @apply bg-muted/30 backdrop-blur-lg border border-border/40 rounded-xl;
+    transition: all 0.3s ease;
+  }
+
+  .glass-input:focus {
+    @apply border-primary/60;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+}
+
+/* ==========================================
+   NEON GLOW EFFECTS
+   ========================================== */
+@layer components {
+  .glow-purple {
+    box-shadow: 
+      0 0 20px hsl(var(--neon-purple) / 0.4),
+      0 0 40px hsl(var(--neon-purple) / 0.2),
+      0 0 60px hsl(var(--neon-purple) / 0.1);
+  }
+
+  .glow-blue {
+    box-shadow: 
+      0 0 20px hsl(var(--neon-blue) / 0.4),
+      0 0 40px hsl(var(--neon-blue) / 0.2),
+      0 0 60px hsl(var(--neon-blue) / 0.1);
+  }
+
+  .glow-pink {
+    box-shadow: 
+      0 0 20px hsl(var(--neon-pink) / 0.4),
+      0 0 40px hsl(var(--neon-pink) / 0.2),
+      0 0 60px hsl(var(--neon-pink) / 0.1);
+  }
+
+  .text-glow {
+    text-shadow: 
+      0 0 10px hsl(var(--neon-purple) / 0.8),
+      0 0 20px hsl(var(--neon-purple) / 0.5),
+      0 0 40px hsl(var(--neon-purple) / 0.3);
+  }
+
+  .text-glow-blue {
+    text-shadow: 
+      0 0 10px hsl(var(--neon-blue) / 0.8),
+      0 0 20px hsl(var(--neon-blue) / 0.5),
+      0 0 40px hsl(var(--neon-blue) / 0.3);
+  }
+}
+
+/* ==========================================
+   BUTTON STYLES
+   ========================================== */
+@layer components {
+  .btn-neon {
+    @apply relative overflow-hidden px-8 py-4 rounded-full font-semibold text-foreground;
+    @apply bg-gradient-to-r from-primary to-accent;
+    @apply transition-all duration-300 ease-out;
+    box-shadow: 
+      0 4px 15px hsl(var(--primary) / 0.4),
+      0 0 30px hsl(var(--primary) / 0.2);
+  }
+
+  .btn-neon:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 6px 25px hsl(var(--primary) / 0.5),
+      0 0 50px hsl(var(--primary) / 0.3);
+  }
+
+  .btn-outline-glow {
+    @apply relative px-8 py-4 rounded-full font-semibold;
+    @apply border-2 border-primary/60 text-primary;
+    @apply transition-all duration-300 ease-out;
+    @apply bg-transparent backdrop-blur-sm;
+  }
+
+  .btn-outline-glow:hover {
+    @apply bg-primary/10 border-primary;
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
+  }
+}
+
+/* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes orb-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(10px, -15px) scale(1.05);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-5px, -25px) scale(1.1);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translate(-15px, -10px) scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   ANIMATION UTILITIES
+   ========================================== */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-orb {
+    animation: orb-float 8s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+}
+
+/* ==========================================
+   GRADIENT BACKGROUNDS
+   ========================================== */
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(260 50% 5%) 0%,
+      hsl(280 40% 8%) 25%,
+      hsl(260 50% 5%) 50%,
+      hsl(270 35% 10%) 75%,
+      hsl(260 50% 5%) 100%
+    );
+  }
+
+  .gradient-radial {
+    background: radial-gradient(
+      ellipse at center,
+      hsl(270 40% 15%) 0%,
+      hsl(260 50% 5%) 70%
+    );
+  }
+
+  .gradient-mesh {
+    background: 
+      radial-gradient(at 40% 20%, hsl(270 80% 30% / 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(195 100% 40% / 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(330 85% 40% / 0.2) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsl(270 80% 20% / 0.3) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsl(195 100% 30% / 0.2) 0px, transparent 50%),
+      hsl(260 50% 5%);
+  }
+}
+
+/* ==========================================
+   SCROLLBAR STYLES
+   ========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(260 50% 5%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(270 40% 25%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(270 60% 35%);
+}
+
+/* ==========================================
+   SELECTION STYLES
+   ========================================== */
+::selection {
+  background: hsl(var(--primary) / 0.4);
+  color: hsl(var(--foreground));
+}
+
+/* ==========================================
+   PRELOADER STYLES
+   ========================================== */
+.preloader {
+  @apply fixed inset-0 z-[9999] flex flex-col items-center justify-center;
+  background: hsl(260 50% 5%);
+}
+
+.preloader-logo {
+  @apply text-5xl md:text-7xl font-bold tracking-tighter;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.progress-bar-container {
+  @apply w-64 h-1 bg-muted/30 rounded-full mt-8 overflow-hidden;
+}
+
+.progress-bar {
+  @apply h-full rounded-full;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+  width: 0%;
+}
+
+/* ==========================================
+   ORB ELEMENTS
+   ========================================== */
+.orb {
+  @apply absolute rounded-full pointer-events-none;
+  filter: blur(60px);
+}
+
+.orb-purple {
+  background: radial-gradient(circle, hsl(270 80% 50% / 0.6), transparent);
+}
+
+.orb-blue {
+  background: radial-gradient(circle, hsl(195 100% 50% / 0.5), transparent);
+}
+
+.orb-pink {
+  background: radial-gradient(circle, hsl(330 85% 50% / 0.5), transparent);
 }
