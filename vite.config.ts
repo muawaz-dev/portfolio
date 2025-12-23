@@ -1,3 +1,2 @@
-// This file exists to satisfy tsconfig.node.json
-// The actual config is in vite.config.js
+// Placeholder to satisfy tsconfig.node.json - actual config is in vite.config.js
 export {};
