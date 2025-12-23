@@ -12,6 +12,7 @@ import SplineBackground from '@/components/SplineBackground';
 import FloatingOrbs from '@/components/FloatingOrbs';
 import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
+import { useIsMobile } from '../hooks/use-mobile';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,18 +36,54 @@ const HomePage = () => {
       gsap.fromTo('.hero-title', { opacity: 0, y: 50, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out', delay: 0.2 });
       gsap.fromTo('.hero-subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5 });
       gsap.fromTo('.hero-cta', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, delay: 0.8 });
-      
-      gsap.fromTo('.service-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, scrollTrigger: { trigger: '.services-section', start: 'top 80%' } });
-      gsap.fromTo('.reason-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, scrollTrigger: { trigger: '.reasons-section', start: 'top 80%' } });
+      gsap.fromTo('.spline', { opacity: 0 }, { opacity: 1, duration: 0.7, delay: 0.8 });
+
+      if (!useIsMobile) {
+        gsap.fromTo('.service-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.15, scrollTrigger: { trigger: '.services-section', start: 'top 25%' } });
+        gsap.fromTo('.reason-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.15, scrollTrigger: { trigger: '.reasons-section', start: 'top 25%' } });
+      }
+      else {
+        // Service cards
+        gsap.utils.toArray('.service-card').forEach(card => {
+          gsap.fromTo(card,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.3,
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 50%',
+              }
+            }
+          );
+        });
+
+        // Reason cards
+        gsap.utils.toArray('.reason-card').forEach(card => {
+          gsap.fromTo(card,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.3,
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 50%',
+              }
+            }
+          );
+        });
+      }
     }, heroRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <main ref={heroRef}>
+    <main ref={heroRef} >
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <SplineBackground />
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <SplineBackground className="spline" />
         <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6">
             Kodac <span className="text-glow text-primary">Solutions</span>

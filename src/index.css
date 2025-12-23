@@ -123,7 +123,7 @@
    ========================================== */
 @layer components {
   .glass {
-    @apply bg-card/30 backdrop-blur-xl border border-border/30;
+    @apply bg-card/30 backdrop-blur-xl ;
   }
 
   .glass-card {
@@ -293,6 +293,9 @@
    ANIMATION UTILITIES
    ========================================== */
 @layer utilities {
+    .h-screen-dynamic {
+    min-height: calc(var(--vh) * 100);
+  }
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
