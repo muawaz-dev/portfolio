@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SectionHeader = ({ label, title, description, align = 'center' }) => {
+const SectionHeader = ({ label, title, description,className, align = 'center',kodac }) => {
   const headerRef = useRef(null);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const SectionHeader = ({ label, title, description, align = 'center' }) => {
   return (
     <div
       ref={headerRef}
-      className={`section-header-content mb-16 ${
+      className={`${className} section-header-content mb-24 ${
         align === 'center' ? 'text-center max-w-3xl mx-auto' : 'text-left'
       }`}
     >
@@ -46,8 +46,10 @@ const SectionHeader = ({ label, title, description, align = 'center' }) => {
           {label}
         </span>
       )}
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
-        {title}
+      <h2 className={` text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground`}>
+        <span>
+          {title}
+        </span>
       </h2>
       {description && (
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">

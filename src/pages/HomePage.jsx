@@ -12,7 +12,8 @@ import SplineBackground from '@/components/SplineBackground';
 import FloatingOrbs from '@/components/FloatingOrbs';
 import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
-import { useIsMobile } from '../hooks/use-mobile';
+import { useIsMobile } from '../hooks/use-mobile.jsx';
+import AboutPage from './AboutPage.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,17 +31,17 @@ const reasons = [
 
 const HomePage = () => {
   const heroRef = useRef(null);
-
+  const onMobile = useIsMobile()
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.hero-title', { opacity: 0, y: 50, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out', delay: 0.2 });
-      gsap.fromTo('.hero-subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5 });
+      gsap.fromTo('.services-section', { filter: 'blur(6px)' }, { filter: 'blur(0px)', duration: 0.6, ease: 'power3.out', delay: 0.2 }); gsap.fromTo('.hero-subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5 });
       gsap.fromTo('.hero-cta', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, delay: 0.8 });
-      gsap.fromTo('.spline', { opacity: 0 }, { opacity: 1, duration: 0.7, delay: 0.8 });
-
-      if (!useIsMobile) {
-        gsap.fromTo('.service-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.15, scrollTrigger: { trigger: '.services-section', start: 'top 25%' } });
-        gsap.fromTo('.reason-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.15, scrollTrigger: { trigger: '.reasons-section', start: 'top 25%' } });
+      gsap.fromTo('.spline', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0.8 });
+      console.log(onMobile)
+      if (!onMobile) {
+        gsap.fromTo('.service-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.1, scrollTrigger: { trigger: '.services-section', start: 'top 1%' } });
+        gsap.fromTo('.reason-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.1, scrollTrigger: { trigger: '.reasons-section', start: 'top 1%' } });
       }
       else {
         // Service cards
@@ -53,7 +54,7 @@ const HomePage = () => {
               duration: 0.3,
               scrollTrigger: {
                 trigger: card,
-                start: 'top 50%',
+                start: 'top 30%',
               }
             }
           );
@@ -69,7 +70,7 @@ const HomePage = () => {
               duration: 0.3,
               scrollTrigger: {
                 trigger: card,
-                start: 'top 50%',
+                start: 'top 30%',
               }
             }
           );
@@ -85,13 +86,13 @@ const HomePage = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <SplineBackground className="spline" />
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6">
-            Kodac <span className="text-glow text-primary">Solutions</span>
+          <h1 className=" hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6">
+            <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#FF3131] to-[#A65EED]'>Kodac</span> <span className="">Solutions</span>
           </h1>
           <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10">
             Crafting Digital Excellence with Cutting-Edge Web Solutions
           </p>
-          <Link to="/contact" className="hero-cta btn-neon inline-block">Contact Us</Link>
+          <Link to="/contact" className="hero-cta btn-neon inline-block">Get Started</Link>
         </div>
       </section>
 
@@ -131,6 +132,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      <AboutPage />
     </main>
   );
 };

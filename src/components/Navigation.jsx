@@ -7,10 +7,10 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { List, X } from '@phosphor-icons/react';
 import gsap from 'gsap';
+import Logo from "../assets/Kodac_Logo_white.png"
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
   { name: 'Projects', path: '/projects' },
   { name: 'Contact', path: '/contact' },
 ];
@@ -55,21 +55,18 @@ const Navigation = () => {
       {/* Desktop Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'glass py-6' : 'bg-transparent py-4'
+          scrolled ? 'glass py-5' : 'bg-transparent py-4'
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="relative group">
-            <span className="text-2xl font-bold tracking-tighter text-foreground">
-              Kodac
-              <span className="text-primary">.</span>
-            </span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+            <img src={Logo} className='w-[110px] lg:ml-6'  alt="" />
+            <span className="ml-2 lg:ml-4 absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8 mr-4 lg:mr-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -86,9 +83,6 @@ const Navigation = () => {
                 )}
               </Link>
             ))}
-            <Link to="/contact" className="btn-neon text-sm px-6 py-2">
-              Get Started
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}

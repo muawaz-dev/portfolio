@@ -10,6 +10,9 @@ import { Lightbulb, Target, Handshake, Heart } from '@phosphor-icons/react';
 import FloatingOrbs from '@/components/FloatingOrbs';
 import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
+import Logo from "../assets/Kodac_Logo_white.png"
+import { Link } from 'react-router-dom';
+import { useIsMobile } from '../hooks/use-mobile.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,20 +25,24 @@ const values = [
 
 const AboutPage = () => {
   const pageRef = useRef(null);
+  const onMobile = useIsMobile()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.about-hero', { opacity: 0, y: 40, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8 });
-      gsap.fromTo('.logo-frame', { opacity: 0, x: -40, filter: 'blur(10px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.8, scrollTrigger: { trigger: '.about-content', start: 'top 80%' } });
+      gsap.fromTo('.logo-frame', { opacity: 0, x: -40, filter: 'blur(10px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.8, scrollTrigger: { trigger: '.about-content', start: onMobile? 'top 10%': 'top 20%' } });
       gsap.fromTo('.value-card', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, scrollTrigger: { trigger: '.values-grid', start: 'top 85%' } });
+      gsap.fromTo('.abt-hero', { opacity: 0 }, { opacity: 1, duration: 1.5, scrollTrigger: { trigger: '.abt-hero', start: 'top 40%' } });
     }, pageRef);
     return () => ctx.revert();
   }, []);
 
+
+
   return (
-    <main ref={pageRef} className="pt-24">
+    <main ref={pageRef}>
       {/* Hero */}
-      <section className="relative py-20 gradient-mesh">
+      <section className="relative abt-hero py-44 ">
         <FloatingOrbs variant="hero" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="about-hero max-w-4xl mx-auto text-center">
@@ -52,31 +59,31 @@ const AboutPage = () => {
 
       {/* Content Section */}
       <section className="about-content py-24">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Logo Frame - Placeholder for future logo */}
-            <div className="logo-frame flex items-center justify-center">
-              <div className="relative w-64 h-64 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
-                <span className="text-6xl font-bold text-primary">K</span>
-                <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-spin-slow" />
+          <div className="container mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Logo Frame - Placeholder for future logo */}
+              <div className="logo-frame flex items-center justify-center">
+                <div className="relative w-64 h-64 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
+                  <img src={Logo} className='w-[200px]' alt="" />
+                </div>
               </div>
-            </div>
 
-            {/* Values */}
-            <div>
-              <SectionHeader label="Our Values" title="What Drives Us" align="left" />
-              <div className="values-grid grid sm:grid-cols-2 gap-6">
-                {values.map((value, i) => (
-                  <GlassCard key={i} className="value-card">
-                    <value.icon size={28} weight="light" className="text-primary mb-4" />
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{value.title}</h3>
-                    <p className="text-sm text-muted-foreground">{value.description}</p>
-                  </GlassCard>
-                ))}
+              {/* Values */}
+              <div>
+                <SectionHeader label="Our Values" title="What Drives Us" align="left" />
+                <div className="values-grid grid sm:grid-cols-2 gap-6">
+                  {values.map((value, i) => (
+                    <GlassCard key={i} className="value-card">
+                      <value.icon size={28} weight="light" className="text-primary mb-4" />
+                      <h3 className="text-lg font-semibold text-foreground mb-2">{value.title}</h3>
+                      <p className="text-sm text-muted-foreground">{value.description}</p>
+                    </GlassCard>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          <Link to="/contact" className="hero-cta btn-neon block mt-12 text-center w-[70%] m-auto">Get Your Project Done</Link>
       </section>
     </main>
   );

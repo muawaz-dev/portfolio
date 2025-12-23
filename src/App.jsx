@@ -12,6 +12,7 @@ import AboutPage from "@/pages/AboutPage";
 import ProjectsPage from "@/pages/ProjectsPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/NotFound";
+import ScrollToTop from './components/ScrollToTop.jsx';
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => {
         <div className={loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}>
           <BrowserRouter>
             <Navigation />
+            <ScrollToTop/>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />

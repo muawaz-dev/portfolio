@@ -34,16 +34,18 @@ const ProjectsPage = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.project-card', { opacity: 0, y: 50, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1, scrollTrigger: { trigger: '.projects-grid', start: 'top 85%' } });
+      gsap.fromTo('.project-hero', { opacity: 0, y: 50, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out', delay: 0.2 });
+      gsap.fromTo('.projects-grid', { filter: 'blur(6px)' }, {  filter: 'blur(0px)', duration: 0.6, ease: 'power3.out', delay: 0.2 });
     }, pageRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <main ref={pageRef} className="pt-24 pb-20">
+    <main ref={pageRef} className="pt-24 pb-20  transition-all ">
       <FloatingOrbs variant="hero" />
       <div className="container mx-auto px-6 relative z-10">
-        <SectionHeader label="Portfolio" title="Our Projects" description="Explore our latest work and see how we bring ideas to life." />
-        
+        <SectionHeader className="project-hero" label="Portfolio" title="Our Projects" description="Explore our latest work and see how we bring ideas to life." />
+
         {/* Projects Grid */}
         <div className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (

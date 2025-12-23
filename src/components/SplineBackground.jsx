@@ -11,7 +11,7 @@ const SplineBackground = ({ className = '' }) => {
         frameBorder="0"
         width="100%"
         height="100%"
-        className="absolute inset-0 scale-125 opacity-80"
+        className="absolute inset-0 scale-125 brightness-150"
         title="3D Background"
         loading="lazy"
       />
