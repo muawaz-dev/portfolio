@@ -3,7 +3,7 @@
    Hero, Services, Why Choose Us sections
    ========================================== */
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -32,41 +32,53 @@ const reasons = [
 const HomePage = () => {
   const heroRef = useRef(null);
   const onMobile = useIsMobile()
+  const [splineLoaded, setSplineLoaded] = useState(false)
+
+  useEffect(() => {
+    console.log(splineLoaded)
+    if (splineLoaded) {
+      if (!window.scrollY === 0) {
+        gsap.fromTo(
+          ".spline",
+          { opacity: 0, filter: "blur(6px)" },
+          {
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 1.2,
+            delay: 1.2,
+            scrollTrigger: {
+              trigger: "body",   // element to watch
+              start: "top top",     // when the top of .spline hits the top of viewport     // only at the very top
+              toggleActions: "play none none none" // play once
+            }
+          }
+
+        )
+      }
+
+      else {
+        gsap.fromTo(
+          ".spline",
+          { opacity: 0, filter: "blur(6px)" },
+          {
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 1.2,
+            delay: 0.8
+          })
+      }
+    }
+
+  }, [splineLoaded])
+  
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.hero-title', { opacity: 0, y: 50, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out', delay: 0.2 });
       gsap.fromTo('.services-section', { filter: 'blur(6px)' }, { filter: 'blur(0px)', duration: 0.6, ease: 'power3.out', delay: 0.2 }); gsap.fromTo('.hero-subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5 });
       gsap.fromTo('.hero-cta', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, delay: 0.8 });
       gsap.registerPlugin(ScrollTrigger);
+      //To start spline animation after load
 
-      gsap.fromTo(
-        ".spline",
-        { opacity: 0, filter: "blur(6px)" },
-        {
-          opacity: 1,
-          filter: "blur(0px)",
-          duration: 1.2,
-          delay: 1.2,
-          scrollTrigger: {
-            trigger: ".spline",   // element to watch
-            start: "top top",     // when the top of .spline hits the top of viewport     // only at the very top
-            toggleActions: "play none none none" // play once
-          }
-        }
-      );
-
-      if(window.scrollY===0){
-         gsap.fromTo(
-        ".spline",
-        { opacity: 0, filter: "blur(6px)" },
-        {
-          opacity: 1,
-          filter: "blur(0px)",
-          duration: 1.2,
-          delay: 0.8})
-      }
-
-      console.log(onMobile)
       if (!onMobile) {
         gsap.fromTo('.service-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.1, scrollTrigger: { trigger: '.services-section', start: 'top 1%' } });
         gsap.fromTo('.reason-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.1, scrollTrigger: { trigger: '.reasons-section', start: 'top 1%' } });
@@ -79,10 +91,10 @@ const HomePage = () => {
             {
               opacity: 1,
               y: 0,
-              duration: 0.3,
+              duration: 0.2,
               scrollTrigger: {
                 trigger: card,
-                start: 'top 30%',
+                start: 'top 55%',
               }
             }
           );
@@ -98,7 +110,7 @@ const HomePage = () => {
               duration: 0.3,
               scrollTrigger: {
                 trigger: card,
-                start: 'top 30%',
+                start: 'top 55%',
               }
             }
           );
@@ -112,7 +124,7 @@ const HomePage = () => {
     <main ref={heroRef} >
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <SplineBackground className="spline" />
+        <SplineBackground className={`spline ${!splineLoaded && 'hidden' }`} onLoaded={(e) => { setSplineLoaded(true) }} />
         <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 className=" hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6">
             <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#FF3131] to-[#A65EED]'>Kodac</span> <span className="">Solutions</span>
@@ -146,12 +158,12 @@ const HomePage = () => {
       <section className="reasons-section relative py-32">
         <FloatingOrbs variant="section" />
         <div className="container mx-auto px-6 relative z-10">
-          <SectionHeader label="Why Us" title="Why Choose Kodac" description="Partner with a team that's dedicated to your digital success." />
+          <SectionHeader kodac={true} label="Why Us" title="Why Choose" description="Partner with a team that's dedicated to your digital success." />
           <div className="grid md:grid-cols-3 gap-8">
             {reasons.map((reason, i) => (
               <GlassCard key={i} className="reason-card text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-accent/10 flex items-center justify-center glow-blue">
-                  <reason.icon size={32} weight="light" className="text-accent" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center glow-purple">
+                  <reason.icon size={32} weight="light" className="text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">{reason.title}</h3>
                 <p className="text-muted-foreground">{reason.description}</p>

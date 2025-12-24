@@ -8,7 +8,7 @@ const GlassCard = ({ children, className = '', hover = true }) => {
     <div
       className={`
         glass-card p-6 md:p-8
-        ${hover ? 'shadow-sm transition-all duration-500 hover:-translate-y-2 hover:glow-purple cursor-pointer' : ''}
+        ${hover ? `shadow-sm transition-all duration-500 hover:-translate-y-2 hover:glow-purple cursor-pointer` : ''}
         ${className}
       `}
     >

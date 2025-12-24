@@ -3,7 +3,7 @@
    3D Spline embed for hero sections
    ========================================== */
 
-const SplineBackground = ({ className = '' }) => {
+const SplineBackground = ({ className = '',onLoaded }) => {
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
       <iframe
@@ -11,9 +11,9 @@ const SplineBackground = ({ className = '' }) => {
         frameBorder="0"
         width="100%"
         height="100%"
+        onLoad={()=>{console.log("Loaded:");onLoaded()}}
         className="absolute inset-0 scale-125 brightness-150"
         title="3D Background"
-        loading="lazy"
       />
       {/* Gradient overlay for better text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />

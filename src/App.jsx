@@ -21,7 +21,7 @@ const App = () => {
     useEffect(() => {
     const setVH = () => {
       // Get the viewport height and multiply by 1% to get a value for a vh unit
-      const vh = window.innerHeight * 0.01;
+      const vh = (window.visualViewport?.height || window.innerHeight) * 0.01;
       document.documentElement.style.setProperty("--vh", `${vh}px`);
     };
 
@@ -30,7 +30,12 @@ const App = () => {
 
     // Re-calc on resize
     window.addEventListener("resize", setVH);
-    return () => window.removeEventListener("resize", setVH);
+    window.addEventListener("orientationchange", setVH);
+    return () => {
+      window.removeEventListener("resize", setVH);
+      window.removeEventListener("orientationchange", setVH);
+    };
+
   }, []);
 
 

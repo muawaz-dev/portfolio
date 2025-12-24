@@ -50,6 +50,7 @@ const SectionHeader = ({ label, title, description,className, align = 'center',k
         <span>
           {title}
         </span>
+        <span className={`${kodac?'bg-clip-text text-transparent bg-gradient-to-r from-[#FF3131] to-[#A65EED]':'hidden'} ml-3`}>Kodac</span>
       </h2>
       {description && (
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">

@@ -35,9 +35,9 @@
     --muted: 260 30% 15%;
     --muted-foreground: 270 15% 60%;
     
-    /* Accent - Electric Blue */
-    --accent: 195 100% 50%;
-    --accent-foreground: 195 100% 98%;
+    /* Accent - Electric Red */
+    --accent:  357 96% 59%;
+    --accent-foreground: 357 96% 59%;
     
     /* Destructive */
     --destructive: 0 84% 60%;
@@ -160,6 +160,12 @@
       0 0 20px hsl(var(--neon-blue) / 0.4),
       0 0 40px hsl(var(--neon-blue) / 0.2),
       0 0 60px hsl(var(--neon-blue) / 0.1);
+  }
+  .glow-red {
+    box-shadow: 
+      0 0 20px hsl(var(--accent) / 0.4),
+      0 0 40px hsl(var(--accent) / 0.2),
+      0 0 60px hsl(var(--accent) / 0.1);
   }
 
   .glow-pink {
@@ -293,7 +299,7 @@
    ========================================== */
 @layer utilities {
     .h-screen-dynamic {
-    min-height: calc(var(--vh) * 100);
+    height: calc(var(--vh) * 100);
   }
   .animate-float {
     animation: float 6s ease-in-out infinite;
@@ -430,7 +436,7 @@
 }
 
 .orb-blue {
-  background: radial-gradient(circle, hsl(195 100% 50% / 0.5), transparent);
+  background: radial-gradient(circle, hsl(var(--accent) / 0.5), transparent);
 }
 
 .orb-pink {
