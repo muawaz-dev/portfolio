@@ -27,45 +27,45 @@ const socialLinks = [
 const Footer = () => {
   const footerRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animate footer content on scroll
-      gsap.fromTo(
-        '.footer-content',
-        { opacity: 0, y: 60, filter: 'blur(10px)' },
-        {
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: footerRef.current,
-            start: 'top 90%',
-          },
-        }
-      );
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     // Animate footer content on scroll
+  //     gsap.fromTo(
+  //       '.footer-content',
+  //       { opacity: 0, y: 60, filter: 'blur(10px)' },
+  //       {
+  //         opacity: 1,
+  //         y: 0,
+  //         filter: 'blur(0px)',
+  //         duration: 0.8,
+  //         ease: 'power3.out',
+  //         scrollTrigger: {
+  //           trigger: footerRef.current,
+  //           start: 'top 90%',
+  //         },
+  //       }
+  //     );
 
-      // Animate social icons with stagger
-      gsap.fromTo(
-        '.social-icon',
-        { opacity: 0, scale: 0.8 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.4,
-          stagger: 0.1,
-          ease: 'back.out(1.7)',
-          scrollTrigger: {
-            trigger: footerRef.current,
-            start: 'top 85%',
-          },
-        }
-      );
-    }, footerRef);
+  //     // Animate social icons with stagger
+  //     gsap.fromTo(
+  //       '.social-icon',
+  //       { opacity: 0, scale: 0.8 },
+  //       {
+  //         opacity: 1,
+  //         scale: 1,
+  //         duration: 0.4,
+  //         stagger: 0.1,
+  //         ease: 'back.out(1.7)',
+  //         scrollTrigger: {
+  //           trigger: footerRef.current,
+  //           start: 'top 85%',
+  //         },
+  //       }
+  //     );
+  //   }, footerRef);
 
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
 
   return (
     <footer ref={footerRef} className="relative py-16 border-t border-border/20 overflow-hidden">

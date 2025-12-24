@@ -37,11 +37,39 @@ const HomePage = () => {
       gsap.fromTo('.hero-title', { opacity: 0, y: 50, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out', delay: 0.2 });
       gsap.fromTo('.services-section', { filter: 'blur(6px)' }, { filter: 'blur(0px)', duration: 0.6, ease: 'power3.out', delay: 0.2 }); gsap.fromTo('.hero-subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5 });
       gsap.fromTo('.hero-cta', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, delay: 0.8 });
-      gsap.fromTo('.spline', { opacity: 0 }, { opacity: 1, duration: 1, delay: 0.8 });
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.fromTo(
+        ".spline",
+        { opacity: 0, filter: "blur(6px)" },
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 1.2,
+          delay: 1.2,
+          scrollTrigger: {
+            trigger: ".spline",   // element to watch
+            start: "top top",     // when the top of .spline hits the top of viewport     // only at the very top
+            toggleActions: "play none none none" // play once
+          }
+        }
+      );
+
+      if(window.scrollY===0){
+         gsap.fromTo(
+        ".spline",
+        { opacity: 0, filter: "blur(6px)" },
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 1.2,
+          delay: 0.8})
+      }
+
       console.log(onMobile)
       if (!onMobile) {
-        gsap.fromTo('.service-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.1, scrollTrigger: { trigger: '.services-section', start: 'top 1%' } });
-        gsap.fromTo('.reason-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.1, scrollTrigger: { trigger: '.reasons-section', start: 'top 1%' } });
+        gsap.fromTo('.service-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.1, scrollTrigger: { trigger: '.services-section', start: 'top 1%' } });
+        gsap.fromTo('.reason-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.1, scrollTrigger: { trigger: '.reasons-section', start: 'top 1%' } });
       }
       else {
         // Service cards
