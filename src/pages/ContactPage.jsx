@@ -19,7 +19,7 @@ const ContactPage = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.form-field', { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, delay: 0.3 });
       gsap.fromTo('.submit-btn', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, delay: 0.7 });
-          gsap.fromTo('.contact-hero', { opacity: 0, y: 50, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out', delay: 0.2 });
+          gsap.fromTo('.contact-hero', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
     }, pageRef);
     return () => ctx.revert();
   }, []);

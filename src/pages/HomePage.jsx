@@ -37,7 +37,8 @@ const HomePage = () => {
   useEffect(() => {
     console.log(splineLoaded)
     if (splineLoaded) {
-      if (!window.scrollY === 0) {
+      console.log(window.scrollY)
+      if (window.scrollY !== 0) {
         gsap.fromTo(
           ".spline",
           { opacity: 0, filter: "blur(6px)" },
@@ -64,7 +65,7 @@ const HomePage = () => {
             opacity: 1,
             filter: "blur(0px)",
             duration: 1.2,
-            delay: 0.8
+            delay: 1
           })
       }
     }
@@ -73,8 +74,9 @@ const HomePage = () => {
   
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.hero-title', { opacity: 0, y: 50, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out', delay: 0.2 });
-      gsap.fromTo('.services-section', { filter: 'blur(6px)' }, { filter: 'blur(0px)', duration: 0.6, ease: 'power3.out', delay: 0.2 }); gsap.fromTo('.hero-subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5 });
+      gsap.fromTo('.hero-title', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
+      gsap.fromTo('.hero-subtitle', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.8 });
+      // gsap.fromTo('.services-section', { filter: 'blur(6px)' }, { filter: 'blur(0px)', duration: 0.6, ease: 'power3.out', delay: 0.2 }); gsap.fromTo('.hero-subtitle', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.5 });
       gsap.fromTo('.hero-cta', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, delay: 0.8 });
       gsap.registerPlugin(ScrollTrigger);
       //To start spline animation after load
@@ -124,7 +126,8 @@ const HomePage = () => {
     <main ref={heroRef} >
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <SplineBackground className={`spline ${!splineLoaded && 'hidden' }`} onLoaded={(e) => { setSplineLoaded(true) }} />
+        {!onMobile ? <SplineBackground onMobile={onMobile} className={`spline opacity-0 ${!splineLoaded && 'hidden' }`} onLoaded={(e) => { setSplineLoaded(true) }} />
+        : <SplineBackground onMobile={onMobile}  />}
         <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 className=" hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6">
             <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#FF3131] to-[#A65EED]'>Kodac</span> <span className="">Solutions</span>
@@ -132,7 +135,7 @@ const HomePage = () => {
           <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10">
             Crafting Digital Excellence with Cutting-Edge Web Solutions
           </p>
-          <Link to="/contact" className="hero-cta btn-neon inline-block">Get Started</Link>
+          <Link to="/contact" className="opacity-0 hero-cta btn-neon inline-block">Get Started</Link>
         </div>
       </section>
 

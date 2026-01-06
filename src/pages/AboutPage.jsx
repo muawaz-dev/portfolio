@@ -29,10 +29,10 @@ const AboutPage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.about-hero', { opacity: 0, y: 40, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8 });
-      gsap.fromTo('.logo-frame', { opacity: 0, x: -40, filter: 'blur(10px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.8, scrollTrigger: { trigger: '.about-content', start: onMobile? 'top 30%': 'top 20%' } });
-      gsap.fromTo('.value-card', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, scrollTrigger: { trigger: '.values-grid', start: 'top 85%' } });
-      gsap.fromTo('.abt-hero', { opacity: 0 }, { opacity: 1, duration: 1.5, scrollTrigger: { trigger: '.abt-hero', start: 'top 40%' } });
+      gsap.fromTo('.about-hero', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8,scrollTrigger:{ trigger:".about-hero",start:"top 40%" } });
+      gsap.fromTo('.logo-frame', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8, scrollTrigger: { trigger: '.about-content', start: onMobile? 'top 30%': 'top 20%' } });
+      // gsap.fromTo('.value-card', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, scrollTrigger: { trigger: '.values-grid', start: 'top 85%' } });
+      gsap.fromTo('.abt-hero', { opacity: 0 }, { opacity: 1, duration: 1.5, scrollTrigger: { trigger: '.abt-hero', start: 'top 60%' } });
     }, pageRef);
     return () => ctx.revert();
   }, []);

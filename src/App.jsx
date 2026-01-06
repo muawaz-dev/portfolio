@@ -17,7 +17,7 @@ import ScrollToTop from './components/ScrollToTop.jsx';
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
     useEffect(() => {
     const setVH = () => {
       // Get the viewport height and multiply by 1% to get a value for a vh unit
@@ -44,8 +44,8 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {loading && <Preloader onComplete={() => setLoading(false)} />}
-        <div className={loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}>
+        {/* {loading && <Preloader onComplete={() => setLoading(false)} />} */}
+        {/* <div className={loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}> */}
           <BrowserRouter>
             <Navigation />
             <ScrollToTop/>
@@ -58,7 +58,7 @@ const App = () => {
             </Routes>
             <Footer />
           </BrowserRouter>
-        </div>
+        {/* </div> */}
       </TooltipProvider>
     </QueryClientProvider>
   );
