@@ -21,14 +21,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    image: project1,title: 'VideoTube-Video Streaming App',description: 'A full-stack YouTube clone application replicating core features such as video playback, user authentication, comments, likes, views, subscriptions, video management and profile management. It demonstrates modern web development practices with a responsive UI.', tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Cloudinary']
+    image: project1,link:"https://video-tube-frontend.netlify.app/",title: 'VideoTube-Video Streaming App',description: 'A full-stack YouTube clone application replicating core features such as video playback, user authentication, comments, likes, views, subscriptions, video management and profile management. It demonstrates modern web development practices with a responsive UI.', tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Cloudinary']
   },
 
-  { image: project2, title: 'PyMaster – Python Course Platform', description: 'A modern e-learning app for selling Python courses with authentication, Stripe payments, and 30-day refund policy.', tech: ['React', 'Tailwind CSS', 'Node.js/Express.js', 'MongoDB', 'Stripe'] },
-  { image: project3, title: 'AquaFix - Plumbing Services', description: 'A modern, responsive and clean landing page with booking funcionality.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
-  { image: project4, title: "The Gentelmen's Cut - Barber Shop", description: 'A full-featured barber shop web app with online booking and gallery showcase.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
-  { image: project5, title: 'Healthcare Portal', description: 'Patient management system with telehealth features.', tech: ['Vue.js', 'Python', 'HIPAA'] },
-  { image: project6, title: 'Real Estate App', description: 'Property listing platform with virtual tours.', tech: ['React', 'Three.js', 'Firebase'] },
+  { image: project2,link:"https://py-master.netlify.app/", title: 'PyMaster – Python Course Platform', description: 'A modern e-learning app for selling Python courses with authentication, Stripe payments, and 30-day refund policy.', tech: ['React', 'Tailwind CSS', 'Node.js/Express.js', 'MongoDB', 'Stripe'] },
+  { image: project3,link:"https://aqua-fix.netlify.app/",title: 'AquaFix - Plumbing Services', description: 'A modern, responsive and clean landing page with booking funcionality.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
+  // { image: project4, title: "The Gentelmen's Cut - Barber Shop", description: 'A full-featured barber shop web app with online booking and gallery showcase.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
+  // { image: project5, title: 'Healthcare Portal', description: 'Patient management system with telehealth features.', tech: ['Vue.js', 'Python', 'HIPAA'] },
+  // { image: project6, title: 'Real Estate App', description: 'Property listing platform with virtual tours.', tech: ['React', 'Three.js', 'Firebase'] },
 ];
 
 const ProjectsPage = () => {
@@ -64,9 +64,12 @@ const ProjectsPage = () => {
                     <span key={j} className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary">{t}</span>
                   ))}
                 </div>
-                <button className="flex items-center gap-2 text-sm text-primary hover:gap-3 transition-all">
+                <a
+                target='_blank'
+                href={project.link}
+                className="flex items-center gap-2 text-sm text-primary hover:gap-3 transition-all">
                   View Project <ArrowRight size={16} weight="light" />
-                </button>
+                </a>
               </div>
             </div>
           ))}

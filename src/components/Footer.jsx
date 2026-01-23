@@ -4,7 +4,7 @@
    ========================================== */
 
 import { Link } from 'react-router-dom';
-import { GithubLogo, LinkedinLogo, TwitterLogo, Envelope } from '@phosphor-icons/react';
+import { GithubLogoIcon, LinkedinLogoIcon, InstagramLogoIcon, EnvelopeIcon } from '@phosphor-icons/react';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -18,10 +18,12 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: GithubLogo, href: 'https://github.com', label: 'GitHub' },
-  { icon: LinkedinLogo, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: TwitterLogo, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: Envelope, href: 'mailto:hello@kodac.solutions', label: 'Email' },
+  { icon: GithubLogoIcon, href: 'https://github.com/muawaz-dev', label: 'GitHub' },
+  { icon: LinkedinLogoIcon, href: 'https://www.linkedin.com/in/muawaz-ahmad/', label: 'LinkedIn' },
+  { icon: InstagramLogoIcon, href: 'https://www.instagram.com/m.u.a.w.a.z/', label: 'Twitter' },
+{
+  icon: EnvelopeIcon,href: 'https://mail.google.com/mail/?view=cm&fs=1&to=muawaz8@gmail.com',label: 'Email'
+}
 ];
 
 const Footer = () => {
@@ -78,11 +80,8 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
             <Link to="/" className="text-2xl font-bold tracking-tighter text-foreground">
-              Kodac<span className="text-primary">.</span>
+              Muawaz<span className="ml-2 text-primary">Ahmad</span>
             </Link>
-            <p className="text-muted-foreground text-sm mt-2">
-              © {new Date().getFullYear()} Kodac Solutions. All rights reserved.
-            </p>
           </div>
 
           {/* Navigation Links */}
