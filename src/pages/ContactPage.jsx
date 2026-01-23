@@ -26,7 +26,7 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast({ title: 'Message Sent!', description: "Thank you for reaching out. We'll get back to you soon." });
+    toast({ title: 'Message Sent!', description: "Thank you for reaching out. I will get back to you soon." });
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -95,11 +95,11 @@ const ContactPage = () => {
 
           {/* Social Links */}
           <div className="flex justify-center gap-6 mt-10">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-4 glass rounded-full hover:glow-purple transition-all">
+            <a href="https://github.com/muawaz-dev" target="_blank" rel="noopener noreferrer" className="p-4 glass rounded-full hover:glow-purple transition-all">
               <GithubLogo size={24} weight="light" className="text-muted-foreground hover:text-primary" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-4 glass rounded-full hover:glow-blue transition-all">
-              <LinkedinLogo size={24} weight="light" className="text-muted-foreground hover:text-accent" />
+            <a href="https://www.linkedin.com/in/muawaz-ahmad/" target="_blank" rel="noopener noreferrer" className="p-4 glass rounded-full hover:glow-purple transition-all">
+              <LinkedinLogo size={24} weight="light" className="text-muted-foreground hover:text-primary" />
             </a>
           </div>
         </div>

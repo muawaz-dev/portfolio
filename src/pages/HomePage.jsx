@@ -123,12 +123,12 @@ const HomePage = () => {
   return (
     <main ref={heroRef} >
       {/* Hero Section */}
-      <section className="relative h-screen flex pt-20 sm:pt-16 md:pt-12 lg:pt-8 justify-center overflow-hidden">
+      <section className="relative h-screen flex pt-20 sm:items-center justify-center overflow-hidden">
         {!onMobile ? <SplineBackground onMobile={onMobile} className={`spline opacity-0 ${!splineLoaded && 'hidden'}`} onLoaded={(e) => { setSplineLoaded(true) }} />
           : <SplineBackground onMobile={onMobile} />}
 
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <div className="  logo-frame flex items-center justify-center mb-4 mt-12">
+          <div className="sm:hidden logo-frame flex items-center justify-center mb-4 mt-12">
             <div className="overflow-hidden relative md:w-52 md:h-52 w-40 h-40 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
               <img src={Pfp} className='object-cover w-full h-full' alt="" />
             </div>
