@@ -20,8 +20,11 @@ import project6 from '@/assets/project-6.png';
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { image: project1, title: 'PyMaster – Python Course Platform', description: 'A modern e-learning app for selling Python courses with authentication, Stripe payments, and 30-day refund policy.', tech: ['React','Tailwind CSS', 'Node.js/Express.js', 'MongoDB','Stripe'] },
-  { image: project2, title: 'Rehab Science - Rehab Center', description: 'A responsive rehabilitation website that displays detailed service information and includes a form for contact.', tech: ['React', 'Tailwind CSS'] },
+  {
+    image: project1,title: 'VideoTube-Video Streaming App',description: 'A full-stack YouTube clone application replicating core features such as video playback, user authentication, comments, likes, views, subscriptions, video management and profile management. It demonstrates modern web development practices with a responsive UI.', tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Cloudinary']
+  },
+
+  { image: project2, title: 'PyMaster – Python Course Platform', description: 'A modern e-learning app for selling Python courses with authentication, Stripe payments, and 30-day refund policy.', tech: ['React', 'Tailwind CSS', 'Node.js/Express.js', 'MongoDB', 'Stripe'] },
   { image: project3, title: 'AquaFix - Plumbing Services', description: 'A modern, responsive and clean landing page with booking funcionality.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
   { image: project4, title: "The Gentelmen's Cut - Barber Shop", description: 'A full-featured barber shop web app with online booking and gallery showcase.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
   { image: project5, title: 'Healthcare Portal', description: 'Patient management system with telehealth features.', tech: ['Vue.js', 'Python', 'HIPAA'] },
@@ -44,7 +47,7 @@ const ProjectsPage = () => {
     <main ref={pageRef} className="pt-24 pb-20  transition-all ">
       <FloatingOrbs variant="hero" />
       <div className="container mx-auto px-6 relative z-10">
-        <SectionHeader className="project-hero" label="Portfolio" title="Our Projects" description="Explore our latest work and see how we bring ideas to life." />
+        <SectionHeader className="project-hero" label="Portfolio" title="My Projects" description="Explore my latest work and see how I bring ideas to life." />
 
         {/* Projects Grid */}
         <div className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">

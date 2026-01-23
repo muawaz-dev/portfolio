@@ -14,7 +14,7 @@ import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
 import { useIsMobile } from '../hooks/use-mobile.jsx';
 import AboutPage from './AboutPage.jsx';
-import Logo from "../assets/Kodac_Logo_white.png"
+import Pfp from "../assets/MuawazPic2.jpg"
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
@@ -128,9 +128,9 @@ const HomePage = () => {
           : <SplineBackground onMobile={onMobile} />}
 
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <div className="logo-frame flex items-center justify-center mb-4 mt-12">
-            <div className="relative md:w-52 md:h-52 w-40 h-40 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
-              <img src={Logo} className='w-[180px]' alt="" />
+          <div className="  logo-frame flex items-center justify-center mb-4 mt-12">
+            <div className="overflow-hidden relative md:w-52 md:h-52 w-40 h-40 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
+              <img src={Pfp} className='object-cover w-full h-full' alt="" />
             </div>
           </div>
           <h1 className=" hero-title text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-foreground mb-6">

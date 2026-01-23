@@ -13,7 +13,7 @@ import GlassCard from '@/components/GlassCard';
 import Logo from "../assets/Kodac_Logo_white.png"
 import { Link } from 'react-router-dom';
 import { useIsMobile } from '../hooks/use-mobile.jsx';
-
+import Pfp from "../assets/MuawazPic2.jpg"
 gsap.registerPlugin(ScrollTrigger);
 
 const values = [
@@ -81,11 +81,11 @@ const AboutPage = () => {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Logo Frame - Placeholder for future logo */}
-            <div className="logo-frame flex items-center justify-center">
-              <div className="relative w-64 h-64 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
-                <img src={Logo} className='w-[200px]' alt="" />
-              </div>
+          <div className="  logo-frame flex items-center justify-center mb-4 mt-12">
+            <div className="overflow-hidden relative md:w-52 md:h-52 w-40 h-40 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
+              <img src={Pfp} className='object-cover w-full h-full' alt="" />
             </div>
+          </div>
 
             {/* Values */}
             <div>
