@@ -25,10 +25,23 @@ const ContactPage = () => {
   }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    toast({ title: 'Message Sent!', description: "Thank you for reaching out. I will get back to you soon." });
-    setFormData({ name: '', email: '', message: '' });
-  };
+  e.preventDefault();
+  const form = e.target;
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(new FormData(form)).toString(),
+  })
+    .then(() => {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I will get back to you soon.",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    })
+    .catch((error) => alert(error));
+};
 
   return (
     <main ref={pageRef} className="pt-24 pb-20 min-h-screen">
