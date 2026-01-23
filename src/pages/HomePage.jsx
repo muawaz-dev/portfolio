@@ -14,13 +14,13 @@ import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
 import { useIsMobile } from '../hooks/use-mobile.jsx';
 import AboutPage from './AboutPage.jsx';
-
+import Logo from "../assets/Kodac_Logo_white.png"
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
-  { icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with cutting-edge technologies.' },
+  { icon: Code, title: 'Frontend Development', description: 'Custom web frontends and web applications built with cutting-edge technologies.' },
   { icon: Palette, title: 'UI/UX Design', description: 'Beautiful, intuitive interfaces that captivate and convert users.' },
-  { icon: Rocket, title: 'Performance', description: 'Lightning-fast load times and optimized user experiences.' },
+  { icon: Code, title: 'Backend Development', description: 'Secure and optimized backends tailored to custom needs.' },
 ];
 
 const reasons = [
@@ -41,10 +41,9 @@ const HomePage = () => {
       if (window.scrollY !== 0) {
         gsap.fromTo(
           ".spline",
-          { opacity: 0, filter: "blur(6px)" },
+          { opacity: 0 },
           {
             opacity: 1,
-            filter: "blur(0px)",
             duration: 1.2,
             delay: 1.2,
             scrollTrigger: {
@@ -60,10 +59,9 @@ const HomePage = () => {
       else {
         gsap.fromTo(
           ".spline",
-          { opacity: 0, filter: "blur(6px)" },
+          { opacity: 0 },
           {
             opacity: 1,
-            filter: "blur(0px)",
             duration: 1.2,
             delay: 1
           })
@@ -71,7 +69,7 @@ const HomePage = () => {
     }
 
   }, [splineLoaded])
-  
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.hero-title', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
@@ -125,24 +123,30 @@ const HomePage = () => {
   return (
     <main ref={heroRef} >
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {!onMobile ? <SplineBackground onMobile={onMobile} className={`spline opacity-0 ${!splineLoaded && 'hidden' }`} onLoaded={(e) => { setSplineLoaded(true) }} />
-        : <SplineBackground onMobile={onMobile}  />}
+      <section className="relative h-screen flex pt-20 sm:pt-16 md:pt-12 lg:pt-8 justify-center overflow-hidden">
+        {!onMobile ? <SplineBackground onMobile={onMobile} className={`spline opacity-0 ${!splineLoaded && 'hidden'}`} onLoaded={(e) => { setSplineLoaded(true) }} />
+          : <SplineBackground onMobile={onMobile} />}
+
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className=" hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6">
-            <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#FF3131] to-[#A65EED]'>Kodac</span> <span className="">Solutions</span>
+          <div className="logo-frame flex items-center justify-center mb-4 mt-12">
+            <div className="relative md:w-52 md:h-52 w-40 h-40 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
+              <img src={Logo} className='w-[180px]' alt="" />
+            </div>
+          </div>
+          <h1 className=" hero-title text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-foreground mb-6">
+            <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#FF3131] to-[#A65EED]'>Muawaz</span> <span className="">Ahmad</span>
           </h1>
-          <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            Crafting Digital Excellence with Cutting-Edge Web Solutions
+          <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12 md:mb-8">
+            I am a passionate fullstack developer, creating end to end modern web solutions
           </p>
-          <Link to="/contact" className="opacity-0 hero-cta btn-neon inline-block">Get Started</Link>
+          <Link to="/contact" className="opacity-0 hero-cta btn-neon inline-block">Hire Me</Link>
         </div>
       </section>
 
       {/* Services Section */}
       <section className="services-section relative py-32 gradient-mesh">
         <div className="container mx-auto px-6">
-          <SectionHeader label="What We Do" title="Our Services" description="We deliver exceptional web solutions tailored to your needs." />
+          <SectionHeader label="What I Do" title="My Services" description="I deliver exceptional web solutions." />
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, i) => (
               <GlassCard key={i} className="service-card text-center">
@@ -151,25 +155,6 @@ const HomePage = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">{service.title}</h3>
                 <p className="text-muted-foreground">{service.description}</p>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="reasons-section relative py-32">
-        <FloatingOrbs variant="section" />
-        <div className="container mx-auto px-6 relative z-10">
-          <SectionHeader kodac={true} label="Why Us" title="Why Choose" description="Partner with a team that's dedicated to your digital success." />
-          <div className="grid md:grid-cols-3 gap-8">
-            {reasons.map((reason, i) => (
-              <GlassCard key={i} className="reason-card text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center glow-purple">
-                  <reason.icon size={32} weight="light" className="text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{reason.title}</h3>
-                <p className="text-muted-foreground">{reason.description}</p>
               </GlassCard>
             ))}
           </div>

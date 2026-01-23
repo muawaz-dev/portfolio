@@ -20,10 +20,10 @@ import project6 from '@/assets/project-6.png';
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { image: project1, title: 'E-Commerce Platform', description: 'Modern shopping experience with seamless checkout.', tech: ['React', 'Node.js', 'Stripe'] },
-  { image: project2, title: 'SaaS Dashboard', description: 'Analytics dashboard with real-time data visualization.', tech: ['TypeScript', 'D3.js', 'PostgreSQL'] },
-  { image: project3, title: 'Mobile Banking App', description: 'Secure fintech solution with biometric authentication.', tech: ['React Native', 'AWS', 'GraphQL'] },
-  { image: project4, title: 'AI Content Platform', description: 'AI-powered content creation and management system.', tech: ['Next.js', 'OpenAI', 'MongoDB'] },
+  { image: project1, title: 'PyMaster – Python Course Platform', description: 'A modern e-learning app for selling Python courses with authentication, Stripe payments, and 30-day refund policy.', tech: ['React','Tailwind CSS', 'Node.js/Express.js', 'MongoDB','Stripe'] },
+  { image: project2, title: 'Rehab Science - Rehab Center', description: 'A responsive rehabilitation website that displays detailed service information and includes a form for contact.', tech: ['React', 'Tailwind CSS'] },
+  { image: project3, title: 'AquaFix - Plumbing Services', description: 'A modern, responsive and clean landing page with booking funcionality.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
+  { image: project4, title: "The Gentelmen's Cut - Barber Shop", description: 'A full-featured barber shop web app with online booking and gallery showcase.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
   { image: project5, title: 'Healthcare Portal', description: 'Patient management system with telehealth features.', tech: ['Vue.js', 'Python', 'HIPAA'] },
   { image: project6, title: 'Real Estate App', description: 'Property listing platform with virtual tours.', tech: ['React', 'Three.js', 'Firebase'] },
 ];
@@ -49,9 +49,9 @@ const ProjectsPage = () => {
         {/* Projects Grid */}
         <div className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
-            <div key={i} className="project-card glass-card overflow-hidden group hover:-translate-y-2 hover:glow-purple transition-all duration-500">
+            <div key={i} className="project-card opacity-0 glass-card overflow-hidden hover:glow-purple shadow-sm transition-all duration-1000">
               <div className="aspect-video overflow-hidden">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>

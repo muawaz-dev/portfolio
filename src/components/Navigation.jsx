@@ -58,12 +58,8 @@ const Navigation = () => {
           scrolled ? 'glass py-5' : 'bg-transparent py-4'
         }`}
       >
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="relative group">
-            <img src={Logo} className='w-[110px] lg:ml-6'  alt="" />
-            <span className="ml-2 lg:ml-4 absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-          </Link>
+        <div className="container mx-auto px-6 flex items-center justify-end">
+
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8 mr-4 lg:mr-8">
