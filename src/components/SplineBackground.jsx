@@ -15,6 +15,8 @@ const SplineBackground = ({ className = '',onLoaded,onMobile }) => {
         className="absolute w-full h-full object-cover inset-0 brightness-125"
         autoPlay
         muted
+        preload="auto"
+        playsInline
       />}
       {/* Gradient overlay for better text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
