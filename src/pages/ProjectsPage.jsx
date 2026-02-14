@@ -25,7 +25,8 @@ const projects = [
   },
 
   { image: project2,link:"https://py-master.netlify.app/", title: 'PyMaster – Python Course Platform', description: 'A modern e-learning app for selling Python courses with authentication, Stripe payments, and 30-day refund policy.', tech: ['React', 'Tailwind CSS', 'Node.js/Express.js', 'MongoDB', 'Stripe'] },
-  { image: project3,link:"https://aqua-fix.netlify.app/",title: 'AquaFix - Plumbing Services', description: 'A modern, responsive and clean landing page with booking funcionality.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
+  { image: project3,link:"https://kodacsolutions.com/",title: 'Kodac Solutions - Digital Services', description: 'Professional website for a digital services agency offering a wide range of creative and technical solutions. Integrated booking functionality makes it easy for clients to schedule consultations or services, while the responsive layout ensures a seamless experience across devices.', tech: ['Next.js','React', 'Tailwind CSS', 'Calendly'] },
+  { image: project4,link:"https://aqua-fix.netlify.app/",title: 'AquaFix - Plumbing Services', description: 'A modern, responsive and clean landing page with booking funcionality.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
   // { image: project4, title: "The Gentelmen's Cut - Barber Shop", description: 'A full-featured barber shop web app with online booking and gallery showcase.', tech: ['React', 'Tailwind CSS', 'Calendly'] },
   // { image: project5, title: 'Healthcare Portal', description: 'Patient management system with telehealth features.', tech: ['Vue.js', 'Python', 'HIPAA'] },
   // { image: project6, title: 'Real Estate App', description: 'Property listing platform with virtual tours.', tech: ['React', 'Three.js', 'Firebase'] },

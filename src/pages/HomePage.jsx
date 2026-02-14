@@ -2,7 +2,6 @@
    HOMEPAGE
    Hero, Services, Why Choose Us sections
    ========================================== */
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -14,13 +13,37 @@ import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
 import { useIsMobile } from '../hooks/use-mobile.jsx';
 import AboutPage from './AboutPage.jsx';
-import Pfp from "../assets/MuawazPic2.jpg"
+import Pfp from "../assets/muawaz.png"
+import html from "../assets/skills/html.png"
+import css from "../assets/skills/css.png"
+import js from "../assets/skills/javascript.png"
+import ts from "../assets/skills/typescript.png"
+import nodeJs from "../assets/skills/node-js.png"
+import react from "../assets/skills/react.png"
+import nextJs from "../assets/skills/next-js.png"
+import python from "../assets/skills/python.png"
+import tailwindCss from "../assets/skills/tailwind-css.png"
+import mongoDb from "../assets/skills/mongodb.png"
+import express from "../assets/skills/express-js.png"
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   { icon: Code, title: 'Frontend Development', description: 'Custom web frontends and web applications built with cutting-edge technologies.' },
   { icon: Palette, title: 'UI/UX Design', description: 'Beautiful, intuitive interfaces that captivate and convert users.' },
   { icon: Code, title: 'Backend Development', description: 'Secure and optimized backends tailored to custom needs.' },
+];
+const skills = [
+  { icon: html, title: 'HTML' },
+  { icon: css, title: 'CSS' },
+  { icon: tailwindCss, title: 'Tailwind CSS' },
+  { icon: js, title: 'JavaScript' },
+  { icon: ts, title: 'TypeScript'},
+  { icon: python, title: 'Python'},
+  { icon: react, title: 'React'},
+  { icon: nextJs, title: 'Next.js'},
+  { icon: nodeJs, title: 'Node.js'},
+  { icon: express, title: 'Express.js'},
+  { icon: mongoDb, title: 'MongoDB'},
 ];
 
 const reasons = [
@@ -32,43 +55,44 @@ const reasons = [
 const HomePage = () => {
   const heroRef = useRef(null);
   const onMobile = useIsMobile()
-  const [splineLoaded, setSplineLoaded] = useState(false)
+  const [splineLoaded, setSplineLoaded] = useState(false);
+  const [pfpLoaded, setPfpLoaded] = useState(false);
+  // To handle the loading state of the spline animation
+  // useEffect(() => {
+  //   console.log(splineLoaded)
+  //   if (splineLoaded) {
+  //     console.log(window.scrollY)
+  //     if (window.scrollY !== 0) {
+  //       gsap.fromTo(
+  //         ".spline",
+  //         { opacity: 0 },
+  //         {
+  //           opacity: 1,
+  //           duration: 1.2,
+  //           delay: 1.2,
+  //           scrollTrigger: {
+  //             trigger: "body",   // element to watch
+  //             start: "top top",     // when the top of .spline hits the top of viewport     // only at the very top
+  //             toggleActions: "play none none none" // play once
+  //           }
+  //         }
 
-  useEffect(() => {
-    console.log(splineLoaded)
-    if (splineLoaded) {
-      console.log(window.scrollY)
-      if (window.scrollY !== 0) {
-        gsap.fromTo(
-          ".spline",
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 1.2,
-            delay: 1.2,
-            scrollTrigger: {
-              trigger: "body",   // element to watch
-              start: "top top",     // when the top of .spline hits the top of viewport     // only at the very top
-              toggleActions: "play none none none" // play once
-            }
-          }
+  //       )
+  //     }
 
-        )
-      }
+  //     else {
+  //       gsap.fromTo(
+  //         ".spline",
+  //         { opacity: 0 },
+  //         {
+  //           opacity: 1,
+  //           duration: 1.2,
+  //           delay: 1
+  //         })
+  //     }
+  //   }
 
-      else {
-        gsap.fromTo(
-          ".spline",
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 1.2,
-            delay: 1
-          })
-      }
-    }
-
-  }, [splineLoaded])
+  // }, [splineLoaded])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -123,14 +147,13 @@ const HomePage = () => {
   return (
     <main ref={heroRef} >
       {/* Hero Section */}
-      <section className="relative h-screen flex pt-20 sm:items-center justify-center overflow-hidden">
-        {!onMobile ? <SplineBackground onMobile={onMobile} className={`spline opacity-0 ${!splineLoaded && 'hidden'}`} onLoaded={(e) => { setSplineLoaded(true) }} />
-          : <SplineBackground onMobile={onMobile} />}
-
+      <section className="relative h-screen flex pt-20 lg:pt-6 sm:items-center justify-center overflow-hidden">
+        <SplineBackground onLoaded={()=>setSplineLoaded(true)} className={`spline ${splineLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`} />
+        {/* <img src={Pfp} alt="" /> */}
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <div className="sm:hidden logo-frame flex items-center justify-center mb-4 mt-12">
-            <div className="overflow-hidden relative md:w-52 md:h-52 w-40 h-40 rounded-full glass-card flex items-center justify-center glow-purple group hover:scale-105 transition-transform duration-500">
-              <img src={Pfp} className='object-cover w-full h-full' alt="" />
+          <div className="logo-frame flex items-center justify-center mb-4 mt-12 sm:mt-0">
+            <div className="overflow-hidden relative md:w-52 md:h-52 w-40 h-40 rounded-full glass-card flex items-center justify-center group hover:scale-105 transition-transform duration-500">
+              <img src={Pfp} onLoad={()=>setPfpLoaded(true)} className={`object-cover w-full h-full ${pfpLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}  alt="" />
             </div>
           </div>
           <h1 className=" hero-title text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-foreground mb-6">
@@ -155,6 +178,24 @@ const HomePage = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">{service.title}</h3>
                 <p className="text-muted-foreground">{service.description}</p>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="services-section relative py-32 gradient-mesh">
+        <div className="container mx-auto px-6">
+          <SectionHeader label="My Skills" title="My Tech Stack" description="I am skilled in the following tech." />
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8">
+            {skills.map((skill, i) => (
+              <GlassCard key={i} className="service-card text-center">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-transparent flex items-center justify-center">
+                  <img src={skill.icon} size={32} weight="light" className={`text-primary`} />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">{skill.title}</h3>
+                <p className="text-muted-foreground">{skill.description}</p>
               </GlassCard>
             ))}
           </div>

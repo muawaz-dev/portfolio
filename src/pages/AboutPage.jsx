@@ -10,10 +10,9 @@ import { Lightbulb, Target, Handshake, Heart } from '@phosphor-icons/react';
 import FloatingOrbs from '@/components/FloatingOrbs';
 import SectionHeader from '@/components/SectionHeader';
 import GlassCard from '@/components/GlassCard';
-import Logo from "../assets/Kodac_Logo_white.png"
 import { Link } from 'react-router-dom';
 import { useIsMobile } from '../hooks/use-mobile.jsx';
-import Pfp from "../assets/MuawazPic2.jpg"
+import Pfp from "../assets/muawaz.png"
 gsap.registerPlugin(ScrollTrigger);
 
 const values = [

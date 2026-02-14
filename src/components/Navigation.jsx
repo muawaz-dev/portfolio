@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { List, X } from '@phosphor-icons/react';
 import gsap from 'gsap';
-import Logo from "../assets/Kodac_Logo_white.png"
 
 const navLinks = [
   { name: 'Home', path: '/' },
